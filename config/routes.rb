@@ -1,6 +1,6 @@
 SampleApp::Application.routes.draw do
   resources :users
-  resources :sessions, only: [:new, :create, :destroybv]
+  resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
