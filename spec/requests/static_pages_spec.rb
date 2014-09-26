@@ -26,11 +26,15 @@ describe "Static pages" do
         visit root_path
       end
 
+      it { should have_content(user.microposts.count) }
+      it { should have_content('micropost'.pluralize(user.microposts.count)) }
+
       it "should render the user's feed" do
         user.feed.each do |item|
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
+    end
   end
 
   describe "Help page" do
@@ -74,6 +78,5 @@ describe "Static pages" do
     click_link "Sign up now!"
     expect(page).to have_title(full_title('Sign up'))
     click_link "sample app"
-    end
   end
 end
